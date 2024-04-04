@@ -1,14 +1,11 @@
-package guitarshop.test;
-
-import guitarshop.Guitar;
-import guitarshop.Inventory;
+package guitarshop;
 
 public class findguitarTester {
 
     public static void main(String[] args){
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
-        Guitar whatIWant = new Guitar("", 0, "fender", "Stratocastor", "electric", "Alder", "Alder");
+        Guitar whatIWant = new Guitar("", 0, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
         Guitar guitar = inventory.search(whatIWant);
 
         if (guitar != null){
@@ -25,8 +22,8 @@ public class findguitarTester {
     }
 
     private static void initializeInventory(Inventory inventory) {
-        inventory.addGuitar("123zc213f", 12313.4, "Custom", "MDK-2", "Electric", "Alder", "Alder");
-        inventory.addGuitar("321ff", 1399.89, "fender", "Stratocastor", "electric", "Alder", "Alder");
+        inventory.addGuitar("123zc213f", 12313.4, Builder.ANY, "MDK-2", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+        inventory.addGuitar("321ff", 1399.89, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
 
     }
     
