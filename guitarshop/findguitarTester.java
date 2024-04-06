@@ -1,24 +1,26 @@
 package guitarshop;
 
+import java.util.List;
+
 public class findguitarTester {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
         Guitar whatIWant = new Guitar("", 0, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-        Guitar guitar = inventory.search(whatIWant);
+        List<Guitar> guitarList = inventory.search(whatIWant.getSpec());
 
-        if (guitar != null){
+        for (Guitar guitar : guitarList) {
+            GuitarSpec gs = guitar.getSpec();
             System.out.println("You might like this: " +
-            "Build: " + guitar.getBuilder() + " "+
-            "Type: "+guitar.getType() + " "+
-            "Back: "+guitar.getBackWood() + " " +
-            "Top: "+guitar.getTopWood()+ " "+
-            "Price: "+guitar.getPrice());
+                    "Build: " + gs.getBuilder() + " " +
+                    "Type: " + gs.getType() + " " +
+                    "Back: " + gs.getBackWood() + " " +
+                    "Top: " + gs.getTopWood() + " " +
+                    "Price: " + guitar.getPrice());
+
         }
-        else{
-            System.out.println("Sorry, no match found.");
-        }
+
     }
 
     private static void initializeInventory(Inventory inventory) {
@@ -26,6 +28,5 @@ public class findguitarTester {
         inventory.addGuitar("321ff", 1399.89, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
 
     }
-    
 
 }
